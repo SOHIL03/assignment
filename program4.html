@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stack Implementation</title>
+ <style>
+  .container {
+    text-align: center;
+  }
+  
+  .stack {
+    margin-bottom: 20px;
+  }
+  
+  .stack button {
+    margin: 5px;
+  }
+  
+  .stack-output {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+ </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Stack Implementation</h1>
+    <div class="stack">
+      <input type="text" id="inputValue" placeholder="Enter a value">
+      <button onclick="push()">Push</button>
+      <button onclick="pop()">Pop</button>
+      <button onclick="peek()">Peek</button>
+      <button onclick="isEmpty()">Is Empty</button>
+      <button onclick="size()">Size</button>
+      <button onclick="printStack()">Print Stack</button>
+    </div>
+    <div id="stackOutput" class="stack-output"></div>
+  </div>
+  <script>
+     }
+  class Stack {
+    constructor() {
+      this.items = [];
+    }
+  
+    // Push element to the top of the stack
+    push(element) {
+      this.items.push(element);
+    }
+  
+    // Remove and return the top element of the stack
+    pop() {
+      if (this.isEmpty()) {
+        return "Underflow";
+      }
+      return this.items.pop();
+    }
+  
+    // Return the top element of the stack without removing it
+    peek() {
+      return this.items[this.items.length - 1];
+    }
+  
+    // Check if the stack is empty
+    isEmpty() {
+      return this.items.length === 0;
+    }
+  
+    // Return the size of the stack
+    size() {
+      return this.items.length;
+    }
+  
+    // Print the elements of the stack
+    printStack() {
+      return this.items.join(" ");
+    }
+  }
+  
+  const stack = new Stack();
+  const stackOutput = document.getElementById("stackOutput");
+  
+  function push() {
+    const inputValue = document.getElementById("inputValue").value;
+    stack.push(inputValue);
+    document.getElementById("inputValue").value = "";
+    stackOutput.textContent = "Stack: " + stack.printStack();
+  }
+  
+  function pop() {
+    const poppedValue = stack.pop();
+    stackOutput.textContent = poppedValue === "Underflow" ? poppedValue : "Popped: " + poppedValue + ", Stack: " + stack.printStack();
+  }
+  
+  function peek() {
+    stackOutput.textContent = "Top element: " + stack.peek();
+  }
+  
+  function isEmpty() {
+    stackOutput.textContent = "Is Empty: " + stack.isEmpty();
+  }
+  
+  function size() {
+    stackOutput.textContent = "Size: " + stack.size();
+  }
+  
+  function printStack() {
+    stackOutput.textContent = "Stack: " + stack.printStack();
+  }
+    
+  </script>
+</body>
+</html>
